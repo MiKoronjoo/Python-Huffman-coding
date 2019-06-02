@@ -1,10 +1,9 @@
-# code_text = ''
 import sys
 
 code_dic = {}
 
 
-def generate_dic(file_name):
+def generate_dic(file_name: str) -> None:
     file_stream = open(file_name, 'r')
     for line in file_stream.readlines():
         char, _, code = line.split('\t')
@@ -17,7 +16,7 @@ def generate_dic(file_name):
         code_dic.update({code.strip(): char})
 
 
-def decoding(bin_text):
+def decoding(bin_text: str) -> str:
     temp_code = ''
     decode_text = ''
     for b in bin_text:
@@ -65,8 +64,8 @@ def main(zip_address: str, huffman_address: str) -> None:
 
 if __name__ == '__main__':
     try:
-        zip_address, huffman_address = sys.argv[1], sys.argv[2]
+        zip_file_address, huffman_file_address = sys.argv[1], sys.argv[2]
     except IndexError:
-        zip_address, huffman_address = 'Zip.txt', 'Huffman.txt'
+        zip_file_address, huffman_file_address = 'Zip.txt', 'Huffman.txt'
 
-    main(zip_address, huffman_address)
+    main(zip_file_address, huffman_file_address)

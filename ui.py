@@ -19,14 +19,15 @@ def run_coding():
     output = subprocess.getoutput('python3 coding.py %s %s' % (INPUT_FILE, DRAW_TREE))
     ui.log(output)
 
+
 def run_decoding():
     output = subprocess.getoutput('python3 decoding.py %s %s' % (ZIP_FILE, HUFFMAN_FILE))
     ui.log(output)
 
 
-def click_on_check_box(i):
+def click_on_check_box(dt_code):
     global DRAW_TREE
-    DRAW_TREE = i
+    DRAW_TREE = dt_code
 
 
 def input_new_text(text):

@@ -100,10 +100,10 @@ def remove_min_heap(heap_array: list) -> None:
     max_heapify(heap_array, 1)
 
 
-def draw_tree(trtl: turtle.Turtle, root: Node, scale) -> None:
-    x = trtl.xcor()
-    y = trtl.ycor()
-    trtl.hideturtle()
+def draw_tree(painter: turtle.Turtle, root: Node, scale: float) -> None:
+    x = painter.xcor()
+    y = painter.ycor()
+    painter.hideturtle()
     if type(root) == Leaf:
         char = root.char
         if char == '\n':
@@ -111,19 +111,19 @@ def draw_tree(trtl: turtle.Turtle, root: Node, scale) -> None:
         if char == '\0':
             char = '\\0'
         text = "'%s',%d" % (char, root.freq)
-        trtl.color('yellow')
-        trtl.stamp()
-        trtl.up()
-        trtl.sety(y - 15)
+        painter.color('yellow')
+        painter.stamp()
+        painter.up()
+        painter.sety(y - 15)
     else:
         text = str(root.freq)
-        trtl.color('cyan')
-        trtl.stamp()
-        trtl.up()
-        trtl.sety(y - 10)
+        painter.color('cyan')
+        painter.stamp()
+        painter.up()
+        painter.sety(y - 10)
 
-    trtl.color('black')
-    trtl.write(text, align='center', font=('Arial', 16, 'bold'))
+    painter.color('black')
+    painter.write(text, align='center', font=('Arial', 16, 'bold'))
 
     if root.left is not None:
         t = turtle.Turtle(shape='circle')
@@ -214,15 +214,15 @@ if __name__ == '__main__':
     import sys
 
     try:
-        dt = int(sys.argv[2])
-        file_address = sys.argv[1]
+        dt_code = int(sys.argv[2])
+        input_file_address = sys.argv[1]
 
     except ValueError:
-        dt = 2
-        file_address = 'Input.txt'
+        dt_code = 2
+        input_file_address = 'Input.txt'
 
     except IndexError:
-        dt = 2
-        file_address = 'Input.txt'
+        dt_code = 2
+        input_file_address = 'Input.txt'
 
-    main(file_address, dt)
+    main(input_file_address, dt_code)
