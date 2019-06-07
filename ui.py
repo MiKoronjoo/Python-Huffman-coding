@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'huffman.ui'
-#
-# Created by: PyQt5 UI code generator 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+# Huffman coding UI
+# Copyright (C) 2019  Hassan Abbasi
+# Email: hassan.abbp@gmail.com
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import subprocess

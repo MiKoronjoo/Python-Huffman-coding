@@ -1,3 +1,7 @@
+# Huffman coding
+# Copyright (C) 2019  Hassan Abbasi
+# Email: hassan.abbp@gmail.com
+
 import sys
 
 code_dic = {}
@@ -40,10 +44,18 @@ def main(zip_address: str, huffman_address: str) -> None:
         print('No such file or directory:', ex.filename)
         return
 
+    except IsADirectoryError as ex:
+        print('Is a directory:', ex.filename)
+        return
+
     try:
         generate_dic(huffman_address)
     except FileNotFoundError as ex:
         print('No such file or directory:', ex.filename)
+        return
+
+    except IsADirectoryError as ex:
+        print('Is a directory:', ex.filename)
         return
 
     bin_text = ''

@@ -1,3 +1,7 @@
+# Huffman coding
+# Copyright (C) 2019  Hassan Abbasi
+# Email: hassan.abbp@gmail.com
+
 import os
 import turtle
 
@@ -162,6 +166,10 @@ def main(file_address: str, dt: int) -> None:
 
     except FileNotFoundError as ex:
         print('No such file or directory:', ex.filename)
+        return
+
+    except IsADirectoryError as ex:
+        print('Is a directory:', ex.filename)
         return
 
     file_text = file_stream.read()
