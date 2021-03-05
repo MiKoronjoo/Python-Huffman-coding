@@ -214,8 +214,10 @@ def main(file_address: str, dt: int) -> None:
         main_draw_tree(root)
 
     print("File '%s' zipped to 'Zip.txt' successfully\n" % file_address)
-    print("Original size:", os.stat(file_address).st_size, 'B')
-    print("Zipped size:", os.stat('Zip.txt').st_size, 'B')
+    o_size = os.stat(file_address).st_size
+    z_size = os.stat('Zip.txt').st_size
+    print("Original size:", o_size, 'B')
+    print("Zipped size:", z_size, 'B', f'(deflated {round((1-(z_size/o_size))*100, 2)}%)')
 
 
 if __name__ == '__main__':
