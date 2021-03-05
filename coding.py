@@ -162,7 +162,10 @@ def main_draw_tree(root: Node, scale: float = 500) -> None:
 
 def main(file_address: str, dt: int) -> None:
     try:
-        file_stream = open(file_address, 'r')
+        with open(file_address, 'r') as file_stream:
+            file_text = file_stream.read()
+            if file_text[-1] == '\n':
+                file_text = file_text[:-1]
 
     except FileNotFoundError as ex:
         print('No such file or directory:', ex.filename)
@@ -172,8 +175,6 @@ def main(file_address: str, dt: int) -> None:
         print('Is a directory:', ex.filename)
         return
 
-    file_text = file_stream.read()
-    file_stream.close()
     for char in file_text:
         if char not in freq_dic:
             freq_dic.update({char: 1})
@@ -190,9 +191,8 @@ def main(file_address: str, dt: int) -> None:
 
     root = make_tree(heap_array)
     coding(root)
-    file_stream = open('Huffman.txt', 'w')
-    file_stream.write('\n'.join(keys))
-    file_stream.close()
+    with open('Huffman.txt', 'w') as file_stream:
+        file_stream.write('\n'.join(keys))
 
     file_text += '\0'
     bin_text = ''
@@ -207,9 +207,9 @@ def main(file_address: str, dt: int) -> None:
         code_text += chr(int(code, 2))
         bin_text = bin_text[8:]
 
-    file_stream = open('Zip.txt', 'w')
-    file_stream.write(code_text)
-    file_stream.close()
+    with open('Zip.txt', 'w') as file_stream:
+        file_stream.write(code_text)
+    
     if dt == 2:
         main_draw_tree(root)
 
